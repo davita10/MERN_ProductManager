@@ -20,15 +20,20 @@ const EditProduct = () => {
         setPrice(price);
         setDescription(description);
       })
-      .catch((error) => console.log(whoops));
+      .catch((whoops) => console.log(whoops));
   }, [id]);
 
-  const updatProduct = (e) => {
+  const updateProduct = (e) => {
     e.preventDefault();
     const productObj = { title, price, description };
     axios
       .put(`http://localhost:8000/api/products/${id}`)
-      .then((res) => navigate("/"))
+
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        navigate("/");
+      })
       .catch((error) => console.log(error));
   };
 

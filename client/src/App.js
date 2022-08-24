@@ -11,8 +11,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/:product_id" element={<DetailProduct />} />
-          <Route path="/:product_id/edit" element={<EditProduct />} />
+          <Route path="/product/:id" element={<DetailProduct />} />
+          <Route path="/product/edit/:id" element={<EditProduct />} />
         </Routes>
       </div>
     </BrowserRouter>

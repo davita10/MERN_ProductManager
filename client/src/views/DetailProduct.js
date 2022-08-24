@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 const DetailProduct = () => {
   // STATE
@@ -8,13 +8,14 @@ const DetailProduct = () => {
 
   // PARAMS for id
   const { id } = useParams();
+  const navigate = useNavigate();
 
   // USE EFFECT AXIOS
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/products/${id}`)
       .then((res) => setProduct(res.data))
-      .catch((error) => console.log(aw, man));
+      .catch((error) => console.log("aw, man", error));
   }, [id]);
 
   const deleteHandler = () => {
@@ -26,7 +27,7 @@ const DetailProduct = () => {
 
         navigate("/");
       })
-      .catch((err) => {
+      .catch((errrr) => {
         console.log(errrr);
       });
   };
@@ -34,10 +35,13 @@ const DetailProduct = () => {
   return (
     <div className="container m-auto">
       <div className="card-body">
-        <h2 className="card-title">Title: {product.title}</h2>
-        <h5 className="card-subtitle mb-3">Price: $ {product.price}</h5>
-        <p className="card-text">Description: {product.description}</p>
-        <button onClick={deleteHandler}>Delete</button>
+        <h1 className="card-title">Title: {product.title}</h1>
+        <h3 className="card-subtitle mb-3">Price: $ {product.price}</h3>
+        <h4 className="card-text">Description: {product.description}</h4>
+        <p>
+          <Link to={`/${product.id}/edit`}>Edit</Link>
+          <button onClick={deleteHandler}>Delete</button>
+        </p>
       </div>
     </div>
   );

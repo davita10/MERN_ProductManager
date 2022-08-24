@@ -33,37 +33,40 @@ const Form = (props) => {
 
   return (
     <div className="container">
-      <h2>Product</h2>
-      <form onSubmit={createProduct}>
+      <h2>Create Product</h2>
+      <form onSubmit={submitHandler}>
         <div className="row mb-3">
           <label className="col-sm-2 col-form-label">Title: </label>
           <input
             onChange={(e) => setTitle(e.target.value)}
+            value={title}
             name="title"
             type="text"
             className="form-control"
           />
         </div>
         <div className="row mb-3">
-          <label className="col-sm-2 col-form-label">Title: </label>
+          <label className="col-sm-2 col-form-label">Price: </label>
           <input
-            onChange={(e) => setTitle(e.target.value)}
-            name="title"
-            type="text"
+            onChange={(e) => setPrice(e.target.value)}
+            value={price}
+            name="price"
+            type="number"
             className="form-control"
           />
         </div>
         <div className="row mb-3">
-          <label className="col-sm-2 col-form-label">Title: </label>
+          <label className="col-sm-2 col-form-label">Description: </label>
           <input
-            onChange={(e) => setTitle(e.target.value)}
-            name="title"
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            name="description"
             type="text"
             className="form-control"
           />
         </div>
-        <button type="submit" className="btn btn-info">
-          Add
+        <button type="submit" value="Create" className="btn btn-info">
+          Create Product
         </button>
       </form>
     </div>
